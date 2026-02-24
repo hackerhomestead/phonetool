@@ -16,28 +16,27 @@ adb shell pm grant com.android.providers.contacts android.permission.READ_CONTAC
 adb shell pm grant com.android.providers.contacts android.permission.WRITE_CONTACTS
 ```
 
-Or run the setup script:
-```bash
-./setup.sh
-```
-
 ## Usage
 
 ```bash
+# List all contacts (with options to filter and limit)
+python3 list_contacts.py
+python3 list_contacts.py --search phonetool_test   # filter by search term
+python3 list_contacts.py --account Molly            # filter by account name
+python3 list_contacts.py --fields name,phone        # choose fields to display
+python3 list_contacts.py --limit 10                 # limit results
+
 # Add 5 test contacts
 python3 add_contacts.py
-
-# View test contacts
-python3 check_contacts.py
 
 # Delete test contacts
 python3 delete_contacts.py
 ```
 
-## What it does
+## Tools
 
+- **list_contacts.py**: List contacts with filtering options (`--account`, `--search`, `--fields`, `--limit`)
 - **add_contacts.py**: Creates 5 test contacts (Alice, Bob, Charlie, Diana, Eve) with name, phone, email, and company data
-- **check_contacts.py**: Lists all test contacts currently on the device
 - **delete_contacts.py**: Removes all test contacts by tag
 
 The contacts are tagged with "phonetool_test" in the account name, allowing them to be identified and deleted later.
